@@ -8,7 +8,6 @@ function BooksPage() {
     if (response.ok) {
       const allBooks = await response.json();
       setBooks(allBooks);
-      console.log(allBooks);
     }
   };
   useEffect(() => {
@@ -37,7 +36,7 @@ function BooksPage() {
           >
             <Link to={`/books/${book._id}`}>
               <img src={book.image} style={{ height: "200px" }} />
-              <h3>Title: {book.title}</h3>
+              <h3>{book.title}</h3>
               <p>Author: {book.authorId.name}</p>
             </Link>
           </li>
