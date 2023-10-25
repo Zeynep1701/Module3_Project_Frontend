@@ -1,6 +1,8 @@
+import AppCss from "./App.css";
 import { Link, Route, Routes } from "react-router-dom";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import BooksPage from "./pages/BooksPage";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
             <Link to="/profile">Profile</Link>
           </li>
           <li>
-            <Link to="/books/new">New book</Link>
+            <Link to="/books">Books</Link>
           </li>
         </ul>
       </nav>
@@ -29,6 +31,7 @@ function App() {
         <Route path="/" element={<h1>Home Page</h1>} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/books" element={<BooksPage />} />
         {/* <Route
           path="/profile"
           element={
