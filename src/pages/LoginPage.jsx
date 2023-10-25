@@ -3,7 +3,7 @@ import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const { handleLogin } = useContext(AuthContext)
 
@@ -30,7 +30,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         const parsed = await response.json()
         handleLogin(parsed.token)
-        // navigate('/profile')
+        navigate('/profile')
       }
     } catch (error) {
       console.log(error)
