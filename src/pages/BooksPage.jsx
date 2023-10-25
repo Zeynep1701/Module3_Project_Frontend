@@ -39,16 +39,6 @@ function BooksPage() {
               <img src={book.image} style={{ height: "200px" }} />
               <h3>Title: {book.title}</h3>
               <p>Author: {book.authorId.name}</p>
-              <p>Publisher: {book.publisher}</p>
-              <p>Publishing date: {book.publishingDate}</p>
-              <p>Description: {book.description}</p>
-              <p>
-                {book.categories.map((category) => (
-                  <li>
-                    <p>Categories:{category}</p>
-                  </li>
-                ))}
-              </p>
             </Link>
           </li>
         ))}

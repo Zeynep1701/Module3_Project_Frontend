@@ -11,9 +11,9 @@ const PrivateRoute = ({ children }) => {
   }
 
   return isLoading ? (
-    <div class="half-circle-spinner">
-      <div class="circle circle-1"></div>
-      <div class="circle circle-2"></div>
+    <div className="half-circle-spinner">
+      <div className="circle circle-1"></div>
+      <div className="circle circle-2"></div>
     </div>
   ) : (
     <>{children}</>
