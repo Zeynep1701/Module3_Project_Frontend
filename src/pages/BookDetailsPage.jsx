@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import AppCss from "../App.css";
 
 function BookDetailsPage() {
-  const [book, setBook] = useState();
+  const [book, setBook] = useState(null);
   //   const navigate = useNavigate();
   const { bookId } = useParams();
 
@@ -29,7 +29,7 @@ function BookDetailsPage() {
 
   if (book === null) {
     return (
-      <div clasName="half-circle-spinner">
+      <div className="half-circle-spinner">
         <div className="circle circle-1"></div>
         <div className="circle circle-2"></div>
       </div>
@@ -39,18 +39,19 @@ function BookDetailsPage() {
   return (
     <>
       <div>
-        <img src={book.image} style={{ height: "200px" }} />
-        <h2>{book.title}</h2>
-        <p>Publisher: {book.publisher}</p>
-        <p>Publishing date: {book.publishingDate}</p>
-        <p>Description: {book.description}</p>
-        <p>
-          {book.categories.map((category) => (
-            <li>
+        <img src={book.book.image} style={{ height: "200px" }} />
+        <h2>{book.book.title}</h2>
+        <h3>{book.book.authorId.name}</h3>
+        <p>Publisher: {book.book.publisher}</p>
+        <p>Publishing date: {book.book.publishingDate}</p>
+        <p>Description: {book.book.description}</p>
+
+        {book.book.categories &&
+          book.book.categories.map((category) => (
+            <li key={book.book._id}>
               <p>Categories:{category}</p>
             </li>
           ))}
-        </p>
       </div>
     </>
   );
