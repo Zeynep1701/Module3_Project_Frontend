@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 function BooksPage() {
   const [books, setBooks] = useState([]);
-  //   const [authors, setAuthors] = useState([]);
 
   const fetchAllBooks = async () => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/books`);
@@ -15,18 +14,6 @@ function BooksPage() {
   useEffect(() => {
     fetchAllBooks();
   }, []);
-
-  //   const fetchAllAuthors = async () => {
-  //     const response = await fetch(`${import.meta.env.VITE_API_URL}/authors`);
-  //     if (response.ok) {
-  //       const allAuthors = await response.json();
-  //       setAuthors(allAuthors);
-  //       console.log(allAuthors);
-  //     }
-  //   };
-  //   useEffect(() => {
-  //     fetchAllAuthors();
-  //   }, []);
 
   return (
     <>
@@ -50,8 +37,8 @@ function BooksPage() {
           >
             <Link to={`/books/${book._id}`}>
               <img src={book.image} style={{ height: "200px" }} />
-              <h3>{book.name}</h3>
-              {/* <p>Author: {book.author}</p> */}
+              <h3>Title: {book.title}</h3>
+              <p>Author: {book.authorId.name}</p>
               <p>Publisher: {book.publisher}</p>
               <p>Publishing date: {book.publishingDate}</p>
               <p>Description: {book.description}</p>
