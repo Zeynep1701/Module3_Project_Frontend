@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import BooksPage from "./pages/BooksPage";
 import BookDetailsPage from "./pages/BookDetailsPage";
 import PrivateRoute from "./components/PrivateRoute";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -48,14 +49,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route
+        <Route
           path="/profile"
           element={
             <PrivateRoute>
               <ProfilePage />
             </PrivateRoute>
           }
-        /> */}
+        />
         <Route path="*" element={<h1>404 Page</h1>} />
       </Routes>
     </>

@@ -1,15 +1,13 @@
 import { useState } from "react";
 
 const reviewForm = ({ bookId, fetchBook }) => {
-  const [userName, setUserName] = useState("");
-  const [image, setImage] = useState("");
   const [rating, setRating] = useState(0);
-  const [reviewDate, setReviewDate] = useState("");
   const [comment, setComment] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const payload = { userName, image, rating, reviewDate, comment };
+    const payload = { rating, comment, book: bookId };
+    let token = localStorage.getItem("authToken");
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews/`, {
@@ -17,6 +15,7 @@ const reviewForm = ({ bookId, fetchBook }) => {
         body: JSON.stringify(payload),
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
       console.log(response);
@@ -24,10 +23,7 @@ const reviewForm = ({ bookId, fetchBook }) => {
         const parsed = await response.json();
         console.log(parsed);
         fetchBook();
-        setUserName("");
-        setImage("");
         setRating("");
-        setReviewDate("");
         setComment("");
       }
     } catch (error) {
@@ -38,31 +34,10 @@ const reviewForm = ({ bookId, fetchBook }) => {
   return (
     <form onSubmit={handleSubmit} style={{ margin: "1rem" }}>
       <label>
-        <strong>User Name: </strong>
-        <input
-          value={userName}
-          onChange={(event) => setUserName(event.target.value)}
-        />
-      </label>
-      <label>
-        <strong>Image: </strong>
-        <input
-          value={image}
-          onChange={(event) => setImage(event.target.value)}
-        />
-      </label>
-      <label>
         <strong>Rating: </strong>
         <input
           value={rating}
           onChange={(event) => setRating(event.target.value)}
-        />
-      </label>
-      <label>
-        <strong>Date of the review: </strong>
-        <input
-          value={reviewDate}
-          onChange={(event) => setReviewDate(event.target.value)}
         />
       </label>
       <label>

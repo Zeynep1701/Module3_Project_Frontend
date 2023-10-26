@@ -5,6 +5,7 @@ import ReviewForm from "../components/ReviewForm.jsx";
 
 function BookDetailsPage() {
   const [book, setBook] = useState(null);
+  const [reviews, setReviews] = useState([]);
   //   const navigate = useNavigate();
   const { bookId } = useParams();
 
@@ -26,7 +27,24 @@ function BookDetailsPage() {
 
   useEffect(() => {
     fetchBook();
-  }, []);
+    fetchReviews();
+  }, [bookId]);
+
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/reviews/${bookId}/reviews`
+      );
+
+      if (response.ok) {
+        const parsed = await response.json();
+        console.log(parsed);
+        setReviews(parsed);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (book === null) {
     return (
@@ -53,6 +71,16 @@ function BookDetailsPage() {
               <p>Categories:{category}</p>
             </li>
           ))}
+
+        {reviews.map((review) => (
+          <li key={review._id}>
+            <img src={review.user.image} style={{ height: "200px" }} />
+            <p>User: {review.user.userName}</p>
+            <p>Date: {review.reviewDate}</p>
+            <p>Rating: {review.rating}</p>
+            <p>Comment: {review.comment}</p>
+          </li>
+        ))}
       </div>
       <ReviewForm bookId={book.book._id} fetchBook={fetchBook} />
     </>
