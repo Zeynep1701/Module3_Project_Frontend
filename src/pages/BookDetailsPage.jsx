@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AppCss from "../App.css";
+import ReviewForm from "../components/ReviewForm.jsx";
 
 function BookDetailsPage() {
   const [book, setBook] = useState(null);
@@ -53,6 +54,7 @@ function BookDetailsPage() {
             </li>
           ))}
       </div>
+      <ReviewForm bookId={book.book._id} fetchBook={fetchBook} />
     </>
   );
 }
