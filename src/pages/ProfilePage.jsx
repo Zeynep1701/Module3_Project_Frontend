@@ -15,17 +15,15 @@ const ProfilePage = () => {
   const fetchWithToken = async (endpoint, callback, method = "GET", body) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api${endpoint}`,
+        `${import.meta.env.VITE_API_URL}${endpoint}`,
         {
           method,
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(body),
         }
       );
-
       if (response.ok) {
         const parsed = await response.json();
         callback(parsed);
@@ -36,7 +34,7 @@ const ProfilePage = () => {
   };
 
   const fetchData = async () => {
-    fetchWithToken(`/user/${userId}`, (data) => {
+    fetchWithToken(`/users/pizza`, (data) => {
       setUserName(data.userName);
       setEmail(data.email);
       setImage(data.image);
@@ -45,10 +43,8 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    if (userId) {
-      fetchData();
-    }
-  }, [userId]);
+    fetchData();
+  }, []);
 
   if (isLoading) {
     return (
@@ -57,11 +53,6 @@ const ProfilePage = () => {
         <div className="circle circle-2"></div>
       </div>
     );
-  }
-
-  if (!userId) {
-    navigate("/login");
-    return null;
   }
 
   return (

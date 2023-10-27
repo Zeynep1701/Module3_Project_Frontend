@@ -1,64 +1,72 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from "react";
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [token, setToken] = useState()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [token, setToken] = useState();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleLogin = async currentToken => {
-    setIsLoading(true)
+  const handleLogin = async (currentToken) => {
+    setIsLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify`, {
-        headers: {
-          Authorization: `Bearer ${currentToken}`,
-        },
-      })
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/verify`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentToken}`,
+          },
+        }
+      );
       if (response.ok) {
-        setToken(currentToken)
-        setIsAuthenticated(true)
-        window.localStorage.setItem('authToken', currentToken)
+        setToken(currentToken);
+        setIsAuthenticated(true);
+        window.localStorage.setItem("authToken", currentToken);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const tokenFromStorage = window.localStorage.getItem('authToken')
+    const tokenFromStorage = window.localStorage.getItem("authToken");
     if (tokenFromStorage) {
-      handleLogin(tokenFromStorage)
+      handleLogin(tokenFromStorage);
     } else {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [])
+  }, []);
 
-  const fetchWithToken = async (endpoint, callback, method = 'GET', body) => {
+  const fetchWithToken = async (endpoint, callback, method = "GET", body) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api${endpoint}`, {
-        method,
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api${endpoint}`,
+        {
+          method,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
       if (response.ok) {
-        const parsed = await response.json()
-        callback(parsed)
+        const parsed = await response.json();
+        callback(parsed);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
-    <AuthContext.Provider value={{ fetchWithToken, isLoading, isAuthenticated, handleLogin }}>
+    <AuthContext.Provider
+      value={{ token, fetchWithToken, isLoading, isAuthenticated, handleLogin }}
+    >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export default AuthContextProvider
+export default AuthContextProvider;

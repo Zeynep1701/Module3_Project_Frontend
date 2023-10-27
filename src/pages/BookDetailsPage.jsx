@@ -90,7 +90,7 @@ function BookDetailsPage() {
 
         {reviews.map((review) => (
           <li key={review._id}>
-            <img src={review.user?.image} style={{ height: "200px" }} />
+            <img src={review.user?.image} style={{ height: "50px" }} />
             <p>User: {review.user?.userName}</p>
             <p>Date: {review.reviewDate}</p>
             <p>Rating: {review.rating}</p>
