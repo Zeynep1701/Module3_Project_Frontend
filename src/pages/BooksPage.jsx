@@ -4,7 +4,14 @@ function BooksPage() {
   const [books, setBooks] = useState([]);
 
   const fetchAllBooks = async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/books`);
+    let token = localStorage.getItem("authToken");
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/books`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
     if (response.ok) {
       const allBooks = await response.json();
       setBooks(allBooks);

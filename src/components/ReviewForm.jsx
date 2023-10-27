@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const reviewForm = ({ bookId, fetchBook }) => {
+const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
@@ -22,6 +22,7 @@ const reviewForm = ({ bookId, fetchBook }) => {
       if (response.ok) {
         const parsed = await response.json();
         console.log(parsed);
+        setReviews([...reviews, parsed.review]);
         fetchBook();
         setRating("");
         setComment("");

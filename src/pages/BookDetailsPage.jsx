@@ -10,9 +10,17 @@ function BookDetailsPage() {
   const { bookId } = useParams();
 
   const fetchBook = async () => {
+    let token = localStorage.getItem("authToken");
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/books/${bookId}`
+        `${import.meta.env.VITE_API_URL}/books/${bookId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       if (response.ok) {
@@ -31,9 +39,17 @@ function BookDetailsPage() {
   }, [bookId]);
 
   const fetchReviews = async () => {
+    let token = localStorage.getItem("authToken");
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/reviews/${bookId}/reviews`
+        `${import.meta.env.VITE_API_URL}/reviews/${bookId}/reviews`,
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       if (response.ok) {
@@ -66,23 +82,28 @@ function BookDetailsPage() {
         <p>Description: {book.book.description}</p>
 
         {book.book.categories &&
-          book.book.categories.map((category) => (
-            <li key={book.book._id}>
+          book.book.categories.map((category, index) => (
+            <li key={index}>
               <p>Categories:{category}</p>
             </li>
           ))}
 
         {reviews.map((review) => (
           <li key={review._id}>
-            <img src={review.user.image} style={{ height: "200px" }} />
-            <p>User: {review.user.userName}</p>
+            <img src={review.user?.image} style={{ height: "50px" }} />
+            <p>User: {review.user?.userName}</p>
             <p>Date: {review.reviewDate}</p>
             <p>Rating: {review.rating}</p>
             <p>Comment: {review.comment}</p>
           </li>
         ))}
       </div>
-      <ReviewForm bookId={book.book._id} fetchBook={fetchBook} />
+      <ReviewForm
+        bookId={book.book._id}
+        fetchBook={fetchBook}
+        setReviews={setReviews}
+        reviews={reviews}
+      />
     </>
   );
 }
