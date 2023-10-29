@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const { token, userId } = useContext(AuthContext);
+  const { token, userId, logOutUser } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchWithToken = async (endpoint, callback, method = "GET", body) => {
-    console.log(endpoint);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}${endpoint}`,
@@ -52,12 +51,18 @@ const ProfilePage = () => {
     );
   }
 
+  const handleLogout = () => {
+    logOutUser();
+    navigate("/login");
+  };
+
   return (
     <div>
       <h1>My Profile</h1>
       <img src={user.user.image} style={{ width: "100px", height: "100px" }} />
       <p>User Name: {user.user.userName}</p>
       <p>Email: {user.user.email}</p>
+      <button onClick={handleLogout}>Log Out</button>
     </div>
   );
 };

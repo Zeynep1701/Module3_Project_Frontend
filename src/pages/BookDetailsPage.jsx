@@ -6,11 +6,11 @@ import ReviewForm from "../components/ReviewForm.jsx";
 function BookDetailsPage() {
   const [book, setBook] = useState(null);
   const [reviews, setReviews] = useState([]);
-  //   const navigate = useNavigate();
   const { bookId } = useParams();
 
+  let token = localStorage.getItem("authToken");
+
   const fetchBook = async () => {
-    let token = localStorage.getItem("authToken");
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/books/${bookId}`,
@@ -33,13 +33,7 @@ function BookDetailsPage() {
     }
   };
 
-  useEffect(() => {
-    fetchBook();
-    fetchReviews();
-  }, [bookId]);
-
   const fetchReviews = async () => {
-    let token = localStorage.getItem("authToken");
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/reviews/${bookId}/reviews`,
@@ -61,6 +55,36 @@ function BookDetailsPage() {
       console.log(error);
     }
   };
+
+  const handleDelete = async (reviewId) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/reviews/${bookId}/reviews/${reviewId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const currentReview = await response.json();
+        const filteredReview = reviews.filter((oneReview) => {
+          return oneReview.id !== reviewId;
+        });
+        setReviews(filteredReview);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBook();
+    fetchReviews();
+  }, [bookId]);
 
   if (book === null) {
     return (
@@ -95,6 +119,13 @@ function BookDetailsPage() {
             <p>Date: {review.reviewDate}</p>
             <p>Rating: {review.rating}</p>
             <p>Comment: {review.comment}</p>
+            <button
+              onClick={() => {
+                handleDelete(review._id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </div>

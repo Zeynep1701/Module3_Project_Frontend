@@ -60,9 +60,24 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const removeToken = () => {
+    localStorage.removeItem("authToken");
+  };
+  const logOutUser = () => {
+    removeToken();
+    handleLogin();
+  };
+
   return (
     <AuthContext.Provider
-      value={{ token, fetchWithToken, isLoading, isAuthenticated, handleLogin }}
+      value={{
+        token,
+        fetchWithToken,
+        isLoading,
+        isAuthenticated,
+        handleLogin,
+        logOutUser,
+      }}
     >
       {children}
     </AuthContext.Provider>
