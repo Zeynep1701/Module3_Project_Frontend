@@ -35,7 +35,7 @@ const ProfilePage = () => {
   };
 
   const fetchData = async () => {
-    fetchWithToken(`/users/data`, (data) => {
+    fetchWithToken(`/users`, (data) => {
       setUser(data);
       // setUserName(data.userName);
       // setEmail(data.email);
