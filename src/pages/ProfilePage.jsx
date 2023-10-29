@@ -7,9 +7,6 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const { token, userId } = useContext(AuthContext);
   const [user, setUser] = useState({});
-  // const [userName, setUserName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [image, setImage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchWithToken = async (endpoint, callback, method = "GET", body) => {
@@ -36,10 +33,8 @@ const ProfilePage = () => {
 
   const fetchData = async () => {
     fetchWithToken(`/users/data`, (data) => {
+      console.log(data);
       setUser(data);
-      // setUserName(data.userName);
-      // setEmail(data.email);
-      // setImage(data.image);
       setIsLoading(false);
     });
   };
@@ -60,9 +55,9 @@ const ProfilePage = () => {
   return (
     <div>
       <h1>My Profile</h1>
-      <img src={user.image} style={{ width: "100px", height: "100px" }} />
-      <p>UserName: {user.userName}</p>
-      <p>Email: {user.email}</p>
+      <img src={user.user.image} style={{ width: "100px", height: "100px" }} />
+      <p>User Name: {user.user.userName}</p>
+      <p>Email: {user.user.email}</p>
     </div>
   );
 };
