@@ -72,7 +72,7 @@ function BookDetailsPage() {
       if (response.ok) {
         const currentReview = await response.json();
         const filteredReview = reviews.filter((oneReview) => {
-          return oneReview.id !== reviewId;
+          return oneReview._id !== reviewId;
         });
         setReviews(filteredReview);
       }
