@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export const AuthContext = createContext();
 
@@ -6,6 +7,7 @@ const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  // const navigate = useNavigate();
 
   const handleLogin = async (currentToken) => {
     setIsLoading(true);

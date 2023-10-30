@@ -32,7 +32,6 @@ const ProfilePage = () => {
 
   const fetchData = async () => {
     fetchWithToken(`/users/data`, (data) => {
-      console.log(data);
       setUser(data);
       setIsLoading(false);
     });

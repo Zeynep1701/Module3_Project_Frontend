@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
   const [rating, setRating] = useState(0);
