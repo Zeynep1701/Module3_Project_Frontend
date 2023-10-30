@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
   const [rating, setRating] = useState(0);
@@ -33,32 +33,34 @@ const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ margin: "1rem" }}>
-      <label>
-        <strong>Rating: </strong>
-        <select
-          id="dropdown"
-          name="dropdown"
-          value={rating}
-          onChange={(event) => setRating(event.target.value)}
-        >
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </label>
-      <label>
-        <strong>Comment: </strong>
-        <input
-          value={comment}
-          onChange={(event) => setComment(event.target.value)}
-        />
-      </label>
-      <button type="submit">Add your review</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} style={{ margin: "1rem" }}>
+        <label>
+          <strong>Rating: </strong>
+          <select
+            id="dropdown"
+            name="dropdown"
+            value={rating}
+            onChange={(event) => setRating(event.target.value)}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+        <label>
+          <strong>Comment: </strong>
+          <input
+            value={comment}
+            onChange={(event) => setComment(event.target.value)}
+          />
+        </label>
+        <button type="submit">Add your review</button>
+      </form>
+    </>
   );
 };
 
