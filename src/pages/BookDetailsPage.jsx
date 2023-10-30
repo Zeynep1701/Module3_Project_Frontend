@@ -8,6 +8,26 @@ function BookDetailsPage() {
   const [book, setBook] = useState(null);
   const [reviews, setReviews] = useState([]);
   const { bookId } = useParams();
+  const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
+  const [reviewToUpdate, setReviewToUpdate] = useState(null);
+
+  const openUpdateForm = (review) => {
+    setReviewToUpdate(review);
+    setIsUpdateFormOpen(true);
+  };
+
+  const closeUpdateForm = () => {
+    setIsUpdateFormOpen(false);
+    setReviewToUpdate(null);
+  };
+
+  const handleUpdateSuccess = (updatedReview) => {
+    const updatedReviews = reviews.map((review) => 
+      review._id === updatedReview._id ? updatedReview : review
+    );
+    setReviews(updatedReviews);
+    closeUpdateForm();
+  };
 
   let token = localStorage.getItem("authToken");
 
@@ -120,6 +140,7 @@ function BookDetailsPage() {
             <p>Date: {review.reviewDate}</p>
             <p>Rating: {review.rating}</p>
             <p>Comment: {review.comment}</p>
+            <button onClick={() => openUpdateForm(review)}>Update</button>
             <button
               onClick={() => {
                 handleDelete(review._id);
@@ -136,8 +157,14 @@ function BookDetailsPage() {
         setReviews={setReviews}
         reviews={reviews}
       />
-    </>
-  );
+  {isUpdateFormOpen && reviewToUpdate && (
+      <UpdateReviewForm
+        review={reviewToUpdate}
+        onUpdateSuccess={handleUpdateSuccess}
+        onClose={closeUpdateForm}
+      />
+    )}
+  </>
+);
 }
-
 export default BookDetailsPage;
