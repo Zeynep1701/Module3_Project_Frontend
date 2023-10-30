@@ -37,6 +37,11 @@ const ProfilePage = () => {
     });
   };
 
+  const handleLogout = () => {
+    logOutUser();
+    navigate("/login");
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,10 +55,9 @@ const ProfilePage = () => {
     );
   }
 
-  const handleLogout = () => {
-    logOutUser();
+  if (token === null) {
     navigate("/login");
-  };
+  }
 
   return (
     <div>

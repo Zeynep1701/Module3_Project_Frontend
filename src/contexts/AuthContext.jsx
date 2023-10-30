@@ -64,8 +64,10 @@ const AuthContextProvider = ({ children }) => {
 
   const removeToken = () => {
     localStorage.removeItem("authToken");
+    setToken(null);
   };
   const logOutUser = () => {
+    setIsLoading(false);
     removeToken();
     handleLogin();
   };
