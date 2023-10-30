@@ -5,6 +5,7 @@ const UpdateReviewForm = ({ review, onUpdateSuccess, onClose }) => {
   const [comment, setComment] = useState(review.comment);
 
   const handleUpdate = async () => {
+    event.preventDefault();
     const payload = { rating, comment };
     let token = localStorage.getItem("authToken");
 
