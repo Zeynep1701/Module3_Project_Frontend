@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AppCss from "../App.css";
 import ReviewForm from "../components/ReviewForm.jsx";
+import UpdateReviewForm from "../components/UpdateReviewForm";
 
 function BookDetailsPage() {
   const [book, setBook] = useState(null);
