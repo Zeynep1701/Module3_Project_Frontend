@@ -24,6 +24,9 @@ const ProfilePage = () => {
       if (response.ok) {
         const parsed = await response.json();
         callback(parsed);
+      } else {
+        setIsLoading(false);
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
@@ -53,10 +56,6 @@ const ProfilePage = () => {
         <div className="circle circle-2"></div>
       </div>
     );
-  }
-
-  if (token === null) {
-    navigate("/login");
   }
 
   return (
