@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function BooksPage() {
   const [originalBooks, setOriginalBooks] = useState([]);
   const [books, setBooks] = useState([]);
-  const [category, setCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const navigate = useNavigate();
 
@@ -48,34 +48,26 @@ function BooksPage() {
     setBooks(copyBooks);
   }
 
-  const handleSortByCategories = () => {
-    const copyBooks = [...books];
-    copyBooks.sort((book1, book2) => book1.categories > book2.categories ? 1 : -1)
-    setBooks(copyBooks);
-  }
-
-  /*const handleSortByCategories = (selectedCategory) => {
-    const filteredBooks = selectedCategory === "all" ? originalBooks : originalBooks.filter(book => book.category === selectedCategory);
-    setCategory(selectedCategory);
+  const handleSortByCategories = (selectedCategory) => {
+    setSelectedCategory(selectedCategory);
+    const filteredBooks = selectedCategory === "all" ? originalBooks : originalBooks.filter(book => book.categories.includes(selectedCategory));
     setBooks(filteredBooks);
-  };*/
+  };
 
   return (
     <>
-      <button type='button' className="button-74" onClick={() => handleSortByAuthors()}>Sort by Authors</button>
-      <button type='button' className="button-74" onClick={() => handleSortByBooks()}>Sort by Books</button>
-      <button type='button' className="button-74" onClick={() => handleSortByCategories ()}>Sort by Categories</button>
-
-      {/*<p>Sort by Category: {category}</p>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("All")}>All</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Romance")}>Romance</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Fantasy")}>Fantasy</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Fiction")}>Fiction</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Horror")}>Horror</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Mystery")}>Mystery</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Self-help")}>Self-help</button>
-      <button type='button' className="button-60" onClick={() => handleSortByCategories("Drama")}>Drama</button>
-  */}
+      <button type='button' className="button-74" onClick={() => handleSortByBooks()}>Sort by Titles (A-Z)</button>
+      <button type='button' className="button-74" onClick={() => handleSortByAuthors()}>Sort by Authors (A-Z)</button>
+      <select className="button-74" value={selectedCategory} onChange={(e) => handleSortByCategories(e.target.value)}>
+        <option value="all">Category: All</option>
+        <option value="Romance">Category: Romance</option>
+        <option value="Fantasy">Category: Fantasy</option> 
+        <option value="Drama">Category: Drama</option>
+        <option value="Fiction">Category: Fiction</option>
+        <option value="Horror">Category: Horror</option>
+        <option value="Mystery">Category: Mystery</option>
+        <option value="Self-help">Category: Self-help</option>
+      </select>
       <ul
         style={{
           listStyle: "none",
