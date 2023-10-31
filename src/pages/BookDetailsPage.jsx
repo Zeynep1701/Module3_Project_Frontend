@@ -11,7 +11,7 @@ function BookDetailsPage() {
   const { bookId } = useParams();
   const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
   const [reviewToUpdate, setReviewToUpdate] = useState(null);
-const {userId} = useContext (AuthContext)
+  const { userId } = useContext(AuthContext);
 
   const openUpdateForm = (review) => {
     setReviewToUpdate(review);
@@ -80,7 +80,6 @@ const {userId} = useContext (AuthContext)
   };
 
   const handleDelete = async (reviewId) => {
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/reviews/${bookId}/reviews/${reviewId}`,
@@ -106,10 +105,10 @@ const {userId} = useContext (AuthContext)
   };
 
   useEffect(() => {
-   // const storedUserId = localStorage.getItem("userId"); //added
+    // const storedUserId = localStorage.getItem("userId"); //added
     //if (storedUserId) { //added
-      //setUserId(storedUserId); //added
-   // } //added
+    //setUserId(storedUserId); //added
+    // } //added
     fetchBook();
     fetchReviews();
   }, [bookId]);
@@ -139,30 +138,31 @@ const {userId} = useContext (AuthContext)
               <p>Categories:{category}</p>
             </li>
           ))}
-        
-        {userId && reviews.map((review) => (
-          <li key={review._id}>
-            <img src={review.user?.image} style={{ height: "50px" }} />
-            <p>User: {review.user?.userName}</p>
-            <p>Date: {review.reviewDate}</p>
-            <p>Rating: {review.rating}</p>
-            <p>Comment: {review.comment}</p>
 
-            {userId === review.user._id && ( //added
-              <button onClick={() => openUpdateForm(review)}>Update</button>
-            )}
+        {userId &&
+          reviews.map((review) => (
+            <li key={review._id}>
+              <img src={review.user?.image} style={{ height: "50px" }} />
+              <p>User: {review.user?.userName}</p>
+              <p>Date: {review.reviewDate}</p>
+              <p>Rating: {review.rating}</p>
+              <p>Comment: {review.comment}</p>
 
-            {userId === review.user._id ?
-            <button
-              onClick={() => {
-                handleDelete(review._id);
-              }}
-            >
-              Delete
-            </button> : null }
-          </li>
-        ))}
+              {userId === review.user._id && ( //added
+                <button onClick={() => openUpdateForm(review)}>Update</button>
+              )}
 
+              {userId === review.user._id ? (
+                <button
+                  onClick={() => {
+                    handleDelete(review._id);
+                  }}
+                >
+                  Delete
+                </button>
+              ) : null}
+            </li>
+          ))}
       </div>
       <ReviewForm
         bookId={book.book._id}

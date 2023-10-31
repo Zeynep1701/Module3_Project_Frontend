@@ -2,12 +2,15 @@ import AppCss from "../App.css";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import UpdateUserForm from "../components/UpdateUserForm";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { token, userId, logOutUser } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
+  const [userToUpdate, setUserToUpdate] = useState(null);
 
   const fetchWithToken = async (endpoint, callback, method = "GET", body) => {
     try {
@@ -49,6 +52,47 @@ const ProfilePage = () => {
     fetchData();
   }, []);
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/users/${userId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        setUser(null);
+        navigate("/signup");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const openUpdateForm = (user) => {
+    setUserToUpdate(user);
+    setIsUpdateFormOpen(true);
+  };
+
+  const closeUpdateForm = () => {
+    setIsUpdateFormOpen(false);
+    setUserToUpdate(null);
+  };
+
+  const handleUpdateSuccess = (updatedUser) => {
+    // const updatedUser = user.map((user) =>
+    //   user._id === updatedUser._id ? updatedUser : user
+    // );
+    console.log(updatedUser);
+    setUser(updatedUser);
+    closeUpdateForm();
+  };
+
   if (isLoading) {
     return (
       <div className="half-circle-spinner">
@@ -65,6 +109,17 @@ const ProfilePage = () => {
       <p>User Name: {user.user.userName}</p>
       <p>Email: {user.user.email}</p>
       <button onClick={handleLogout}>Log Out</button>
+      <button onClick={() => openUpdateForm(user)}>Update</button>
+      <button onClick={handleDelete}>Delete user</button>
+
+      {isUpdateFormOpen && userToUpdate && (
+        <UpdateUserForm
+          userToUpdate={userToUpdate}
+          user={user}
+          onUpdateSuccess={handleUpdateSuccess}
+          onClose={closeUpdateForm}
+        />
+      )}
     </div>
   );
 };
