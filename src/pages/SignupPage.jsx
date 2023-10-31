@@ -20,7 +20,6 @@ const SignupPage = () => {
     myFormData.append("password", password);
 
     const payload = myFormData;
-    console.log(myFormData);
 
     try {
       const response = await fetch(
@@ -32,7 +31,6 @@ const SignupPage = () => {
       );
       if (response.status === 201) {
         const parsed = await response.json();
-        console.log(parsed);
         navigate("/login");
       }
     } catch (error) {
