@@ -5,6 +5,8 @@ function BooksPage() {
   const [originalBooks, setOriginalBooks] = useState([]);
   const [books, setBooks] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortBy, setSortBy] = useState(null);
+
 
   const navigate = useNavigate();
 
@@ -36,17 +38,44 @@ function BooksPage() {
 
   //sorting functions to filter books 
 
-  const handleSortByAuthors = () => {
-    const copyBooks = [...books];
-    copyBooks.sort((book1, book2) => book1.authorId.name > book2.authorId.name ? 1 : -1)
-    setBooks(copyBooks);
-  }
+  const handleSortByBookTitles = () => {
+    if (sortBy === "books") {
+      // If already sorted by authors, reset the order
+      setBooks([...originalBooks]);
+      setSortBy(null);
+    } else {
+      const copyBooks = [...books];
+      copyBooks.sort((book1, book2) => {
+        const bookTitle1 = book1.title;
+        const bookTitle2 = book2.title;
+          return bookTitle1.localeCompare(bookTitle2);
 
-  const handleSortByBooks = () => {
-    const copyBooks = [...books];
-    copyBooks.sort((book1, book2) => book1.title > book2.title ? 1 : -1)
-    setBooks(copyBooks);
-  }
+      });
+      setBooks(copyBooks);
+      setSortBy("books");
+    }
+  };
+
+  const handleSortByAuthors = () => {
+    if (sortBy === "authors") {
+      // If already sorted by authors, reset the order
+      setBooks([...originalBooks]);
+      setSortBy(null);
+    } else {
+      const copyBooks = [...books];
+      copyBooks.sort((book1, book2) => {
+        const authorName1 = book1.authorId.name;
+        const authorName2 = book2.authorId.name;
+        if (authorName1 === authorName2) {
+          return book1.title.localeCompare(book2.title);
+        } else {
+          return authorName1.localeCompare(authorName2);
+        }
+      });
+      setBooks(copyBooks);
+      setSortBy("authors");
+    }
+  };
 
   const handleSortByCategories = (selectedCategory) => {
     setSelectedCategory(selectedCategory);
@@ -56,12 +85,12 @@ function BooksPage() {
 
   return (
     <>
-      <button type='button' className="button-74" onClick={() => handleSortByBooks()}>Sort by Titles (A-Z)</button>
-      <button type='button' className="button-74" onClick={() => handleSortByAuthors()}>Sort by Authors (A-Z)</button>
+      <button type="button" className="button-74" onClick={handleSortByBookTitles}>{sortBy === "books" ? "Reset Order" : "Sort by Titles (A-Z)"}</button>
+      <button type="button" className="button-74" onClick={handleSortByAuthors}>{sortBy === "authors" ? "Reset Order" : "Sort by Authors (A-Z)"}</button>
       <select className="button-74" value={selectedCategory} onChange={(e) => handleSortByCategories(e.target.value)}>
         <option value="all">Category: All</option>
         <option value="Romance">Category: Romance</option>
-        <option value="Fantasy">Category: Fantasy</option> 
+        <option value="Fantasy">Category: Fantasy</option>
         <option value="Drama">Category: Drama</option>
         <option value="Fiction">Category: Fiction</option>
         <option value="Horror">Category: Horror</option>
