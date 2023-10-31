@@ -18,10 +18,8 @@ const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
       if (response.ok) {
         const parsed = await response.json();
-        console.log(parsed);
         setReviews([...reviews, parsed.review]);
         fetchBook();
         setRating("");

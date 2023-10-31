@@ -85,10 +85,6 @@ const ProfilePage = () => {
   };
 
   const handleUpdateSuccess = (updatedUser) => {
-    // const updatedUser = user.map((user) =>
-    //   user._id === updatedUser._id ? updatedUser : user
-    // );
-    console.log(updatedUser);
     setUser(updatedUser);
     closeUpdateForm();
   };

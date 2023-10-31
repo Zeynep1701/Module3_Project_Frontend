@@ -48,7 +48,6 @@ function BookDetailsPage() {
 
       if (response.ok) {
         const parsed = await response.json();
-        console.log(parsed);
         setBook(parsed);
       }
     } catch (error) {
@@ -71,7 +70,6 @@ function BookDetailsPage() {
 
       if (response.ok) {
         const parsed = await response.json();
-        console.log(parsed);
         setReviews(parsed);
       }
     } catch (error) {
