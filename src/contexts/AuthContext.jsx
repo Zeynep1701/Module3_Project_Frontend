@@ -23,9 +23,8 @@ const AuthContextProvider = ({ children }) => {
         }
       );
       if (response.ok) {
-        const parse = await response.json()
-        console.log(parse)
-        setUserId(parse.userId)
+        const parse = await response.json();
+        setUserId(parse.userId);
         setToken(currentToken);
         setIsAuthenticated(true);
         window.localStorage.setItem("authToken", currentToken);

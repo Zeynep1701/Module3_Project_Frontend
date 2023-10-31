@@ -74,12 +74,7 @@ const SignupPage = () => {
         </label>
         <label>
           Image:
-          <input
-            type="file"
-            name="image"
-            // value={image}
-            // onChange={(event) => setImage(event.target.image.files[0])}
-          />
+          <input type="file" name="image" />
         </label>
         <button type="submit">Register</button>
       </form>
