@@ -7,6 +7,8 @@ import BookDetailsPage from "./pages/BookDetailsPage";
 import PrivateRoute from "./components/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage";
 import HomePage from "./pages/HomePage";
+import 
+
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
         <ul className="navUl">
           <li>
             <img
-              src="./assets/Book_Lovers.png"
+              src="src\assets\Book Lovers.png"
               alt="Book Lovers logo"
               width="165"
             />
