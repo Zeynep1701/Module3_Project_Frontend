@@ -99,29 +99,34 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
+    <div className="profileContainer">
       <h1>My Profile</h1>
-      <img src={user.user.image} style={{ width: "100px", height: "100px" }} />
-      <p>User Name: {user.user.userName}</p>
-      <p>Email: {user.user.email}</p>
-      <button className="btn" onClick={handleLogout}>
-        Log Out
-      </button>
-      <button className="btn" onClick={() => openUpdateForm(user)}>
-        Update
-      </button>
-      <button className="btn" onClick={handleDelete}>
-        Delete user
-      </button>
-
-      {isUpdateFormOpen && userToUpdate && (
-        <UpdateUserForm
-          userToUpdate={userToUpdate}
-          user={user}
-          onUpdateSuccess={handleUpdateSuccess}
-          onClose={closeUpdateForm}
+      <div className="profileCard">
+        <img
+          src={user.user.image}
+          style={{ width: "100px", height: "100px" }}
         />
-      )}
+        <h4>User Name: {user.user.userName}</h4>
+        <h4>Email: {user.user.email}</h4>
+        <button className="btn button-74" onClick={handleLogout}>
+          Log Out
+        </button>
+        <button className="btn button-74" onClick={() => openUpdateForm(user)}>
+          Update
+        </button>
+        <button className="btn button-74" onClick={handleDelete}>
+          Delete
+        </button>
+
+        {isUpdateFormOpen && userToUpdate && (
+          <UpdateUserForm
+            userToUpdate={userToUpdate}
+            user={user}
+            onUpdateSuccess={handleUpdateSuccess}
+            onClose={closeUpdateForm}
+          />
+        )}
+      </div>
     </div>
   );
 };

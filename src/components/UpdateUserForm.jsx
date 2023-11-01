@@ -33,29 +33,47 @@ const UpdateReviewForm = ({ user, userToUpdate, onUpdateSuccess, onClose }) => {
 
   return (
     <div className="modal">
-      <form onSubmit={handleUpdate}>
-        <label>
-          User Name:
-          <input
-            name="userName"
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            name="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </label>
-        <button className="btn" type="submit">
-          Update user
-        </button>
-        <button className="btn" type="button" onClick={onClose}>
-          Cancel
-        </button>
+      <form className="updateForm" onSubmit={handleUpdate}>
+        <table className="updateTable">
+          <tr>
+            <td>
+              <label for="userName">User Name:</label>
+            </td>
+            <td>
+              <input
+                className="input"
+                type="text"
+                name="userName"
+                id="userName"
+                value={userName}
+                onchange="(event) => setUserName(event.target.value)"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="email">Email:</label>
+            </td>
+            <td>
+              <input
+                className="input"
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                onchange="(event) => setEmail(event.target.value)"
+              />
+            </td>
+          </tr>
+        </table>
+        <div>
+          <button className="btn button-74" type="submit">
+            Update user
+          </button>
+          <button className="btn button-74" type="button" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

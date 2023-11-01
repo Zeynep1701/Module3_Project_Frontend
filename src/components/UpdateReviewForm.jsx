@@ -53,10 +53,10 @@ const UpdateReviewForm = ({ review, onUpdateSuccess, onClose }) => {
             onChange={(e) => setComment(e.target.value)}
           />
         </label>
-        <button className="btn" type="submit">
+        <button className="btn button-74" type="submit">
           Update Review
         </button>
-        <button className="btn" type="button" onClick={onClose}>
+        <button className="btn button-74" type="button" onClick={onClose}>
           Cancel
         </button>
       </form>

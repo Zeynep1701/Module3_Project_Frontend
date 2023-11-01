@@ -56,7 +56,7 @@ const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
             onChange={(event) => setComment(event.target.value)}
           />
         </label>
-        <button className="btn" type="submit">
+        <button className="btn button-74" type="submit">
           Add your review
         </button>
       </form>
