@@ -17,16 +17,17 @@ const HomePage = () => {
 
   return (
     <div className="homeBackground">
-     <h1>Meet your next favorite book</h1>
-     <p>A warm and welcoming community of nearly three million book lovers</p>
+     <h1 style={{ fontSize: 100 }}>Meet your next</h1>
+    <h1 style={{ fontSize: 100 }}>favorite book</h1>
+     <h2>A warm and welcoming community of nearly three million book lovers</h2>
       <button
         
         onClick={navigateSignup}
         className="btn"
       >
-        Sign up
+        <h2>Sign up</h2>
       </button>
-      <button onClick={navigateLogin} className="btn">Log in</button>
+      <button onClick={navigateLogin} className="btn"><h2>Login</h2></button>
       <footer />
     </div>
   );

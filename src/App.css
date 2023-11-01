@@ -1,15 +1,16 @@
-
 #root {
-  max-width: 1280px;
+  /*max-width: 1280px;*/
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 auto;
+  min-width: 100vw;
+  min-height: 100vh;
   text-align: center;
   font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #6D69B5;
 }
 
 /* Nav bar */
-.navUl{
+.navUl {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -18,7 +19,7 @@
   align-items: center;
 }
 
-.navUl li{
+.navUl li {
   font-weight: bold;
   color: #363062;
 }
@@ -35,7 +36,8 @@
 }
 
 /* Spinner */
-.half-circle-spinner, .half-circle-spinner * {
+.half-circle-spinner,
+.half-circle-spinner * {
   box-sizing: border-box;
 }
 
@@ -68,17 +70,21 @@
 @keyframes half-circle-spinner-animation {
   0% {
     transform: rotate(0deg);
-    
+
   }
-  100%{
+
+  100% {
     transform: rotate(360deg);
   }
 }
 
 /*Home page*/
-.homeBackground{
-  background-image: url("../assets/booklovers_home_background.jpg");
+.homeBackground {
+  background-image: url("./assets/bookloversHomeBackground.jpg");
   background-size: cover;
+  margin: 0;
+  padding: 0;
+
   text-align: left;
   color: #363062;
 
@@ -87,21 +93,21 @@
 /* Buttons */
 
 .btn {
-  background-color: #363062; 
-  color: #F99417; 
-  padding: 0.7rem 1.5rem; 
+  background-color: #363062;
+  color: #F99417;
+  padding: 0.7rem 1.5rem;
   /* border: 0.15rem solid #363062;  */
-  border-radius: 1.2rem; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 16px; 
+  border-radius: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
   cursor: pointer;
   font-weight: bold;
 }
 
 .btn:hover {
-  background-color: #F99417; 
+  background-color: #F99417;
   color: #363062;
 }
 
@@ -113,14 +119,15 @@
 }
 
 .socialMedia {
-  height:30px;
+  height: 30px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 30px;
 }
-.button-74:hover{
-  background-color: #6D69B5; 
+
+.button-74:hover {
+  background-color: #6D69B5;
   color: #363062;
 }
 
@@ -134,11 +141,11 @@
 
 }
 
-.bookCard{
-  background-color: #fff; 
-  border-radius: 4rem; 
+.bookCard {
+  background-color: #fff;
+  border-radius: 4rem;
   padding: 1rem;
-  margin: 0,8rem 0; 
+  margin: 0, 8rem 0;
   box-shadow: 0.4rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
   flex: 1;
   min-width: calc(20% - 10px);
@@ -147,26 +154,23 @@
   align-items: center;
 }
 
-.cardImg{
-  flex: 1; 
-  padding: 1rem 0 1rem 1rem; 
+.cardImg {
+  flex: 1;
+  padding: 1rem 0 1rem 1rem;
 }
 
-.cardImg img{
+.cardImg img {
   width: auto;
   height: auto;
   display: block;
-  border-radius: 0.4rem; 
+  border-radius: 0.4rem;
 }
 
 .cardContent {
-  flex: 1; 
-  padding: 1.5rem; 
+  flex: 1;
+  padding: 1.5rem;
 }
 
-.cardContent h3{
+.cardContent h3 {
   margin: 0 2rem;
 }
-
-
-
