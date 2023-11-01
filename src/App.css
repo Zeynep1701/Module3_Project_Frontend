@@ -4,6 +4,7 @@
   padding: 2rem;
   text-align: center;
   font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #6D69B5;
 }
 
 /* Nav bar */
@@ -18,35 +19,18 @@
 
 .navUl li{
   font-weight: bold;
+  color: #363062;
 }
 
 /* Links */
 
 .link {
   text-decoration: none;
+  color: #6D69B5;
 }
 
 .link:hover {
   color: #F99417;
-}
-
-/* Buttons */
-
-.btn {
-  background-color: #363062; 
-  color: #F99417; 
-  padding: 0.7rem 1.5rem; 
-  border: 0.15rem solid #363062; 
-  border-radius: 4rem; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 16px; 
-}
-
-.btn:hover {
-  background-color: #F99417; 
-  color: #363062;
 }
 
 /* Spinner */
@@ -83,15 +67,35 @@
 @keyframes half-circle-spinner-animation {
   0% {
     transform: rotate(0deg);
-
+    
   }
   100%{
     transform: rotate(360deg);
   }
 }
 
+/* Buttons */
+
+.btn {
+  background-color: #363062; 
+  color: #F99417; 
+  padding: 0.7rem 1.5rem; 
+  /* border: 0.15rem solid #363062;  */
+  border-radius: 1.2rem; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #F99417; 
+  color: #363062;
+}
 /* Filter Buttons */
-.button-74 {
+/* .button-74 {
   margin: 15px;
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -125,5 +129,63 @@
     min-width: 120px;
     padding: 0 25px;
   }
+} */
+
+.button-74 {
+  margin: 1rem 1rem;
+  color: #F2F2F2;
+  background-color: #6D69B5;
+  border: 0;
 }
+
+.button-74:hover{
+  background-color: #6D69B5; 
+  color: #363062;
+}
+
+.booksGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+}
+
+.bookCard{
+  background-color: #fff; 
+  border-radius: 4rem; 
+  padding: 1rem;
+  margin: 0,8rem 0; 
+  box-shadow: 0.4rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: calc(20% - 10px);
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+}
+
+.cardImg{
+  flex: 1; 
+  padding: 1rem 0 1rem 1rem; 
+}
+
+.cardImg img{
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 0.4rem; 
+}
+
+.cardContent {
+  flex: 1; 
+  padding: 1.5rem; 
+}
+
+.cardContent h3{
+  margin: 0 2rem;
+}
+
+
 

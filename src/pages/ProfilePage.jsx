@@ -104,9 +104,15 @@ const ProfilePage = () => {
       <img src={user.user.image} style={{ width: "100px", height: "100px" }} />
       <p>User Name: {user.user.userName}</p>
       <p>Email: {user.user.email}</p>
-      <button onClick={handleLogout}>Log Out</button>
-      <button onClick={() => openUpdateForm(user)}>Update</button>
-      <button onClick={handleDelete}>Delete user</button>
+      <button className="btn" onClick={handleLogout}>
+        Log Out
+      </button>
+      <button className="btn" onClick={() => openUpdateForm(user)}>
+        Update
+      </button>
+      <button className="btn" onClick={handleDelete}>
+        Delete user
+      </button>
 
       {isUpdateFormOpen && userToUpdate && (
         <UpdateUserForm

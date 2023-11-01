@@ -62,7 +62,9 @@ const LoginPage = () => {
             type="password"
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="btn" type="submit">
+          Log In
+        </button>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </form>
     </>

@@ -103,10 +103,6 @@ function BookDetailsPage() {
   };
 
   useEffect(() => {
-    // const storedUserId = localStorage.getItem("userId"); //added
-    //if (storedUserId) { //added
-    //setUserId(storedUserId); //added
-    // } //added
     fetchBook();
     fetchReviews();
   }, [bookId]);
@@ -147,11 +143,14 @@ function BookDetailsPage() {
               <p>Comment: {review.comment}</p>
 
               {userId === review.user._id && ( //added
-                <button onClick={() => openUpdateForm(review)}>Update</button>
+                <button className="btn" onClick={() => openUpdateForm(review)}>
+                  Update
+                </button>
               )}
 
               {userId === review.user._id ? (
                 <button
+                  className="btn"
                   onClick={() => {
                     handleDelete(review._id);
                   }}
