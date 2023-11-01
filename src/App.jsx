@@ -6,15 +6,16 @@ import BooksPage from "./pages/BooksPage";
 import BookDetailsPage from "./pages/BookDetailsPage";
 import PrivateRoute from "./components/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <>
       <nav>
         <ul>
-          {/* <li>
+          <li>
             <Link to="/">Home</Link>
-          </li> */}
+          </li>
           <li>
             <Link to="/signup">Signup</Link>
           </li>
@@ -30,7 +31,7 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        {/* <Route path="/" element={<h1>Home Page</h1>} /> */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
