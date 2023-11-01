@@ -90,7 +90,7 @@ function BooksPage() {
   return (
     <>
       <h1 className="title">Find what books to read next</h1>
-      <h2>Find yout new books with other readers recommendations</h2>
+      <h2>Find your new books with other readers recommendations</h2>
       <button
         type="button"
         className="button-74 btn"
