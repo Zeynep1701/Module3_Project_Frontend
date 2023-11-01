@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <div className="homeBackground">
       <div className="homeText">
-     <h1 style={{ fontSize: 120 }}>Meet your next favorite book</h1>
+     <h1 style={{ fontSize: 120, fontFamily:'Source Serif 4, serif'}} className="serifFont">Meet your next favorite book</h1>
      <h2 style={{ fontSize: 30 }}>A warm and welcoming community of nearly 2.5 million book lovers</h2>
      </div>
       <div>

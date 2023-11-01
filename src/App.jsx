@@ -1,5 +1,6 @@
 import AppCss from "./App.css";
 import { Link, Route, Routes } from "react-router-dom";
+import Footer from './components/footer'
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import BooksPage from "./pages/BooksPage";
@@ -74,6 +75,7 @@ function App() {
         />
         <Route path="*" element={<h1>404 Page</h1>} />
       </Routes>
+      <Footer />
     </>
   );
 }
