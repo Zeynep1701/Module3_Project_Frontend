@@ -15,7 +15,7 @@ function App() {
         <ul className="navUl">
           <li>
             <img
-              src="src\assets\Book Lovers.png"
+              src="src\assets\Book_Lovers.png"
               alt="Book Lovers logo"
               width="165"
             />

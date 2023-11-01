@@ -109,7 +109,7 @@ const ProfilePage = () => {
         <h4>User Name: {user.user.userName}</h4>
         <h4>Email: {user.user.email}</h4>
         <button className="btn button-74" onClick={handleLogout}>
-          Log Out
+          Log out
         </button>
         <button className="btn button-74" onClick={() => openUpdateForm(user)}>
           Update
