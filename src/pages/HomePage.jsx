@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import AppCss from "../App.css";
+import booksImageHomepage from '../assets/booklovers_home_background.jpg'
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <div className="homeBackground">
       <button
         onClick={navigateSignup}
         className="bg-customBlue text-customOrange font-roboto p-4 rounded"
@@ -21,7 +23,7 @@ const HomePage = () => {
         Sign up
       </button>
       <button onClick={navigateLogin}>Log in</button>
-    </>
+    </div>
   );
 };
 
