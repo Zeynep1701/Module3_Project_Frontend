@@ -1,7 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 auto;
+  /*min-width: 100vw;*/
+  /*min-height: 100vh;*/
   text-align: center;
   font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #6D69B5;
@@ -23,7 +25,7 @@
   align-items: center;
 }
 
-.navUl li{
+.navUl li {
   font-weight: bold;
   color: #363062;
   font-size: 1.1rem;
@@ -41,7 +43,8 @@
 }
 
 /* Spinner */
-.half-circle-spinner, .half-circle-spinner * {
+.half-circle-spinner,
+.half-circle-spinner * {
   box-sizing: border-box;
 }
 
@@ -74,69 +77,74 @@
 @keyframes half-circle-spinner-animation {
   0% {
     transform: rotate(0deg);
-    
+
   }
-  100%{
+
+  100% {
     transform: rotate(360deg);
   }
+}
+
+/*Home page*/
+.homeBackground {
+  background-image: url("./assets/bookloversHomeBackground.jpg");
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+  color: #363062;
+
 }
 
 /* Buttons */
 
 .btn {
-  background-color: #363062; 
-  color: #F99417; 
-  padding: 0.7rem 1.5rem; 
+  background-color: #363062;
+  color: #F99417;
+  padding: 0.7rem 1.5rem;
   /* border: 0.15rem solid #363062;  */
-  border-radius: 1.2rem; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 16px; 
+  border-radius: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
   cursor: pointer;
   font-weight: bold;
 }
 
 .btn:hover {
-  background-color: #F99417; 
+  background-color: #F99417;
   color: #363062;
 }
-/* Filter Buttons */
-/* .button-74 {
-  margin: 15px;
-  background-color: #fbeee0;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
+
+h1 {
+  font-size: 80px;
+  font-family: 'Source Serif 4', serif;
+}
+.homeBtn {
+  margin-top: 70px;
+  margin-left: 90px;
+  margin-bottom: 600px;
+  background-color: #363062;
+  color: #F99417;
+  padding: 0.7rem 1.5rem;
+  /* border: 0.15rem solid #363062;  */
+  border-radius: 1.2rem;
   text-align: center;
   text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  
 }
 
-.button-74:hover {
-  background-color: #fff;
+.homeText {
+  margin-top: 0px;
+  margin-left: 90px;
+  max-width: 950px;
 }
-
-.button-74:active {
-  box-shadow: #422800 2px 2px 0 0;
-  transform: translate(2px, 2px);
-}
-
-@media (min-width: 768px) {
-  .button-74 {
-    min-width: 120px;
-    padding: 0 25px;
-  }
-} */
 
 .button-74 {
   margin: 1rem 1rem;
@@ -145,8 +153,16 @@
   border: 0;
 }
 
-.button-74:hover{
-  background-color: #6D69B5; 
+.socialMedia {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.button-74:hover {
+  background-color: #6D69B5;
   color: #363062;
 }
 
@@ -161,11 +177,11 @@
 
 }
 
-.bookCard{
-  background-color: #fff; 
-  border-radius: 4rem; 
+.bookCard {
+  background-color: #fff;
+  border-radius: 4rem;
   padding: 1rem;
-  margin: 0,8rem 0; 
+  margin: 0, 8rem 0;
   box-shadow: 0.4rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
   flex: 1;
   min-width: calc(20% - 10px);
@@ -174,24 +190,24 @@
   align-items: center;
 }
 
-.cardImg{
-  flex: 1; 
-  padding: 1rem 0 1rem 1rem; 
+.cardImg {
+  flex: 1;
+  padding: 1rem 0 1rem 1rem;
 }
 
-.cardImg img{
+.cardImg img {
   width: auto;
   height: auto;
   display: block;
-  border-radius: 0.4rem; 
+  border-radius: 0.4rem;
 }
 
 .cardContent {
-  flex: 1; 
-  padding: 1.5rem; 
+  flex: 1;
+  padding: 1.5rem;
 }
 
-.cardContent h3{
+.cardContent h3 {
   margin: 0 2rem;
 }
 
