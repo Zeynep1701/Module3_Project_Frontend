@@ -1,12 +1,12 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AppCss from "../App.css";
 
 function BooksPage() {
   const [originalBooks, setOriginalBooks] = useState([]);
   const [books, setBooks] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState(null);
-
 
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function BooksPage() {
     fetchAllBooks();
   }, []);
 
-  //sorting functions to filter books 
+  //sorting functions to filter books
 
   const handleSortByBookTitles = () => {
     if (sortBy === "books") {
@@ -48,8 +48,7 @@ function BooksPage() {
       copyBooks.sort((book1, book2) => {
         const bookTitle1 = book1.title;
         const bookTitle2 = book2.title;
-          return bookTitle1.localeCompare(bookTitle2);
-
+        return bookTitle1.localeCompare(bookTitle2);
       });
       setBooks(copyBooks);
       setSortBy("books");
@@ -79,15 +78,32 @@ function BooksPage() {
 
   const handleSortByCategories = (selectedCategory) => {
     setSelectedCategory(selectedCategory);
-    const filteredBooks = selectedCategory === "all" ? originalBooks : originalBooks.filter(book => book.categories.includes(selectedCategory));
+    const filteredBooks =
+      selectedCategory === "all"
+        ? originalBooks
+        : originalBooks.filter((book) =>
+            book.categories.includes(selectedCategory)
+          );
     setBooks(filteredBooks);
   };
 
   return (
     <>
-      <button type="button" className="button-74" onClick={handleSortByBookTitles}>{sortBy === "books" ? "Reset Order" : "Sort by Titles (A-Z)"}</button>
-      <button type="button" className="button-74" onClick={handleSortByAuthors}>{sortBy === "authors" ? "Reset Order" : "Sort by Authors (A-Z)"}</button>
-      <select className="button-74" value={selectedCategory} onChange={(e) => handleSortByCategories(e.target.value)}>
+      <button
+        type="button"
+        className="button-74"
+        onClick={handleSortByBookTitles}
+      >
+        {sortBy === "books" ? "Reset Order" : "Sort by Titles (A-Z)"}
+      </button>
+      <button type="button" className="button-74" onClick={handleSortByAuthors}>
+        {sortBy === "authors" ? "Reset Order" : "Sort by Authors (A-Z)"}
+      </button>
+      <select
+        className="button-74"
+        value={selectedCategory}
+        onChange={(e) => handleSortByCategories(e.target.value)}
+      >
         <option value="all">Category: All</option>
         <option value="Romance">Category: Romance</option>
         <option value="Fantasy">Category: Fantasy</option>
@@ -115,7 +131,7 @@ function BooksPage() {
               boxShadow: "1px 2px 7px 2px #BC9B6A",
             }}
           >
-            <Link to={`/books/${book._id}`}>
+            <Link className="link" to={`/books/${book._id}`}>
               <img src={book.image} style={{ height: "200px" }} />
               <h3>{book.title}</h3>
               <p>Author: {book.authorId.name}</p>
