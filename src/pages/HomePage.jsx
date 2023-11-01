@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import AppCss from "../App.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -13,7 +14,12 @@ const HomePage = () => {
 
   return (
     <>
-      <button onClick={navigateSignup}>Sign up</button>
+      <button
+        onClick={navigateSignup}
+        className="bg-customBlue text-customOrange font-roboto p-4 rounded"
+      >
+        Sign up
+      </button>
       <button onClick={navigateLogin}>Log in</button>
     </>
   );

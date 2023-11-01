@@ -11,22 +11,39 @@ import HomePage from "./pages/HomePage";
 function App() {
   return (
     <>
-      <nav>
-        <ul>
+      <nav className="nav">
+        <ul className="navUl">
           <li>
-            <Link to="/">Home</Link>
+            <img
+              src="src\assets\Book Lovers.png"
+              alt="Book Lovers logo"
+              width="150"
+            />
           </li>
           <li>
-            <Link to="/signup">Signup</Link>
+            <Link className="link" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link className="link" to="/books">
+              Books
+            </Link>
           </li>
           <li>
-            <Link to="/profile">Profile</Link>
+            <Link className="link" to="/profile">
+              Profile
+            </Link>
           </li>
           <li>
-            <Link to="/books">Books</Link>
+            <Link className="link btn" to="/signup">
+              Signup
+            </Link>
+          </li>
+          <li>
+            <Link className="link btn" to="/login">
+              Login
+            </Link>
           </li>
         </ul>
       </nav>
