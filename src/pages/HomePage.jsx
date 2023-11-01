@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import React from "react";
 import AppCss from "../App.css";
-import booksImageHomepage from '../assets/booklovers_home_background.jpg'
+import booksImageHomepage from '../assets/bookloversHomeBackground.jpg'
 
 
 const HomePage = () => {
@@ -16,13 +17,17 @@ const HomePage = () => {
 
   return (
     <div className="homeBackground">
+     <h1>Meet your next favorite book</h1>
+     <p>A warm and welcoming community of nearly three million book lovers</p>
       <button
+        
         onClick={navigateSignup}
-        className="bg-customBlue text-customOrange font-roboto p-4 rounded"
+        className="btn"
       >
         Sign up
       </button>
-      <button onClick={navigateLogin}>Log in</button>
+      <button onClick={navigateLogin} className="btn">Log in</button>
+      <footer />
     </div>
   );
 };

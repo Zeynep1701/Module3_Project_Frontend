@@ -92,6 +92,13 @@
 }
 
 /*Home page*/
+.homeBackground{
+  background-image: url("../assets/booklovers_home_background.jpg");
+  background-size: cover;
+  text-align: left;
+  color: #363062;
+
+}
 
 /* Filter Buttons */
 .button-74 {
@@ -130,3 +137,10 @@
   }
 }
 
+.socialMedia {
+  height:30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
