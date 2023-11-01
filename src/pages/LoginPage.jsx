@@ -43,7 +43,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Email:

@@ -37,12 +37,12 @@ function App() {
           </li>
           <li>
             <Link className="link btn" to="/signup">
-              Signup
+              Sign up
             </Link>
           </li>
           <li>
             <Link className="link btn" to="/login">
-              Login
+              Log in
             </Link>
           </li>
         </ul>

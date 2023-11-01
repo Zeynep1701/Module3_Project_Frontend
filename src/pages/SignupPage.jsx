@@ -40,7 +40,7 @@ const SignupPage = () => {
 
   return (
     <>
-      <h1>Signup</h1>
+      <h1>Sign up</h1>
       <form onSubmit={handleSubmit}>
         <label>
           User Name:

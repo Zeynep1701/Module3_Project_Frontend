@@ -10,7 +10,17 @@
 }
 
 /* Nav bar */
+<<<<<<< HEAD
 .navUl {
+=======
+
+.nav{
+  margin: 0;
+  padding: 0;
+}
+
+.navUl{
+>>>>>>> bdf4b9ddf93a85113204b973cf262bc418ba8564
   list-style: none;
   padding: 0;
   margin: 0;
@@ -160,6 +170,7 @@ h1 {
   color: #363062;
 }
 
+
 .booksGrid {
   list-style: none;
   padding: 0;
@@ -222,7 +233,7 @@ h1 {
   margin: 0,8rem 0; 
   box-shadow: 0.4rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
   background-color: #F2F2F2;
-  width: 50vw;
+  width: 40vw;
 }
 
 .profileCard img{
