@@ -5,7 +5,7 @@
 
 ## User Stories
 - 404: As an anonymous person /user, I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault.
-- Signup: As anonymous person, I can sign up in the platform so that I can start looking for different books.
+- Signup: As an anonymous person, I can sign up in the platform so that I can start looking for different books.
 - Login: As a user, I can login to the platform so that I can see all the books.
 - Logout: As a user, I can logout from the platform so no one else can use it.
 - Add reviews: As a user, I can add a review and a rating so that I can share it with the community.
@@ -35,7 +35,7 @@
 | `/reviews` | UpdateReviewForm | Logged-in users | Form for users to update their book reviews |
 | `/users` | UpdateUserForm | Logged-in users | Form for users to update their profile information |
 
-## Compontents
+## Components
 - LoginPage
 - SignupPage
 - ReviewForm
