@@ -50,8 +50,10 @@ const UpdateReviewForm = ({ user, userToUpdate, onUpdateSuccess, onClose }) => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </label>
-        <button type="submit">Update user</button>
-        <button type="button" onClick={onClose}>
+        <button className="btn" type="submit">
+          Update user
+        </button>
+        <button className="btn" type="button" onClick={onClose}>
           Cancel
         </button>
       </form>

@@ -74,7 +74,9 @@ const SignupPage = () => {
           Image:
           <input type="file" name="image" />
         </label>
-        <button type="submit">Register</button>
+        <button className="btn" type="submit">
+          Register
+        </button>
       </form>
     </>
   );

@@ -89,18 +89,24 @@ function BooksPage() {
 
   return (
     <>
+      <h1>Find what books to read next</h1>
+      <h3>Find yout new books with other readers recommendations</h3>
       <button
         type="button"
-        className="button-74"
+        className="button-74 btn"
         onClick={handleSortByBookTitles}
       >
         {sortBy === "books" ? "Reset Order" : "Sort by Titles (A-Z)"}
       </button>
-      <button type="button" className="button-74" onClick={handleSortByAuthors}>
+      <button
+        type="button"
+        className="button-74 btn"
+        onClick={handleSortByAuthors}
+      >
         {sortBy === "authors" ? "Reset Order" : "Sort by Authors (A-Z)"}
       </button>
       <select
-        className="button-74"
+        className="button-74 btn"
         value={selectedCategory}
         onChange={(e) => handleSortByCategories(e.target.value)}
       >
@@ -113,29 +119,20 @@ function BooksPage() {
         <option value="Mystery">Category: Mystery</option>
         <option value="Self-help">Category: Self-help</option>
       </select>
-      <ul
-        style={{
-          listStyle: "none",
-          display: "grid",
-          gridTemplate: "auto / repeat(4, 1fr)",
-          gap: "1rem",
-          padding: "0 1rem",
-        }}
-      >
+      <ul className="booksGrid">
         {books.map((book) => (
-          <li
-            key={book._id}
-            style={{
-              padding: "1rem",
-              borderRadius: "12px",
-              boxShadow: "1px 2px 7px 2px #BC9B6A",
-            }}
-          >
+          <li key={book._id}>
             <Link className="link" to={`/books/${book._id}`}>
-              <img src={book.image} style={{ height: "200px" }} />
-              <h3>{book.title}</h3>
-              <p>Author: {book.authorId.name}</p>
-              <p>Category: {book.categories}</p>
+              <div className="bookCard">
+                <div className="cardImg">
+                  <img src={book.image} style={{ height: "200px" }} />
+                </div>
+                <div className="cardContent">
+                  <h3>{book.title}</h3>
+                  <h4>{book.authorId.name}</h4>
+                  <p>Category: {book.categories}</p>
+                </div>
+              </div>
             </Link>
           </li>
         ))}
