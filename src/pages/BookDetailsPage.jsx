@@ -143,14 +143,17 @@ function BookDetailsPage() {
               <p>Comment: {review.comment}</p>
 
               {userId === review.user._id && ( //added
-                <button className="btn" onClick={() => openUpdateForm(review)}>
+                <button
+                  className="btn button-74"
+                  onClick={() => openUpdateForm(review)}
+                >
                   Update
                 </button>
               )}
 
               {userId === review.user._id ? (
                 <button
-                  className="btn"
+                  className="btn button-74"
                   onClick={() => {
                     handleDelete(review._id);
                   }}

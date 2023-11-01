@@ -17,7 +17,7 @@ function App() {
             <img
               src="src\assets\Book Lovers.png"
               alt="Book Lovers logo"
-              width="150"
+              width="165"
             />
           </li>
           <li>
