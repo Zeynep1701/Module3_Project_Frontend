@@ -33,26 +33,45 @@ const UpdateReviewForm = ({ review, onUpdateSuccess, onClose }) => {
   };
 
   return (
-    <div className="modal">
+    <div className="modal reviewForm">
       <form onSubmit={handleUpdate}>
-        <label>
-          <strong>Rating: </strong>
-          <select value={rating} onChange={(e) => setRating(e.target.value)}>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </label>
-        <label>
-          <strong>Comment: </strong>
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-        </label>
+        <table className="reviewFormTable">
+          <tr>
+            <td>
+              <strong>Rating:</strong>
+            </td>
+            <td>
+              <label>
+                <select
+                  className="input"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                >
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Comment:</strong>
+            </td>
+            <td>
+              <label>
+                <textarea
+                  className="input"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+              </label>
+            </td>
+          </tr>
+        </table>
         <button className="btn button-74" type="submit">
           Update Review
         </button>
