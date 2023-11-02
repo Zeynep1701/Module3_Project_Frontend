@@ -45,25 +45,31 @@ const LoginPage = () => {
     <>
       <h1>Log in</h1>
       <form onSubmit={handleSubmit} className="updateForm">
-        <label>
-          Email:
-          <input
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            className="inputLoninSignin"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            className="inputLoninSignin"
-            required
-            type="password"
-          />
-        </label>
+        <table>
+          <tr>
+            <td>Email:</td>
+            <td>
+              <input
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                className="inputLoninSignin"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td>
+              <input
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                className="inputLoninSignin"
+                required
+                type="password"
+              />
+            </td>
+          </tr>
+        </table>
         <button className="btn button-74" type="submit">
           Log In
         </button>

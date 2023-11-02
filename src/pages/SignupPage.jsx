@@ -42,45 +42,63 @@ const SignupPage = () => {
     <>
       <h1>Sign up</h1>
       <form onSubmit={handleSubmit} className="updateForm">
-        <label>
-          User Name:
-          <input
-            name="userName"
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
-            className="inputLoninSignin"
-            required
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            name="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            className="inputLoninSignin"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            name="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-            type="password"
-            className="inputLoninSignin"
-          />
-        </label>
-        <label>
-          Image:
-          <input type="file" name="image" className="inputLoninSignin" />
-        </label>
-        <button className="btn button-74" type="submit" >
+        <table>
+          <tr>
+            <td>User Name:</td>
+            <td>
+              <label>
+                <input
+                  name="userName"
+                  value={userName}
+                  onChange={(event) => setUserName(event.target.value)}
+                  className="inputLoninSignin"
+                  required
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>
+              <label>
+                <input
+                  name="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  className="inputLoninSignin"
+                  required
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td>
+              <label>
+                <input
+                  name="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                  type="password"
+                  className="inputLoninSignin"
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Image:</td>
+            <td>
+              <label>
+                <input type="file" name="image" className="inputLoninSignin" />
+              </label>
+            </td>
+          </tr>
+        </table>
+
+        <button className="btn button-74" type="submit">
           Register
         </button>
-        
       </form>
     </>
   );
