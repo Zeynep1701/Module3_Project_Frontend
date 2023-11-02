@@ -4,8 +4,6 @@ import AppCss from "../App.css";
 import ReviewForm from "../components/ReviewForm.jsx";
 import UpdateReviewForm from "../components/UpdateReviewForm";
 import { AuthContext } from "../contexts/AuthContext";
-import { format } from "date-fns";
-import { string } from "prop-types";
 
 function BookDetailsPage() {
   const [book, setBook] = useState(null);
@@ -162,7 +160,7 @@ function BookDetailsPage() {
               <p>Rating: {review.rating}</p>
               <p>Comment: {review.comment}</p>
 
-              {userId === review.user._id && ( //added
+              {userId === review.user._id && (
                 <button
                   className="btn button-74"
                   onClick={() => openUpdateForm(review)}
