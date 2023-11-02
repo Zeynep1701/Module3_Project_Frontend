@@ -102,24 +102,6 @@ function BookDetailsPage() {
     }
   };
 
-  const formattedPublishingDate = () => {
-    let publishingDate = book.book.publishingDate;
-    let stringDate = publishingDate.toString();
-    let formattedDate = stringDate.slice(0, 10).split("-");
-    if (formattedDate.length === 3) {
-      return `${formattedDate[2]}-${formattedDate[1]}-${formattedDate[0]}`;
-    }
-  };
-
-  const formattedReviewDate = (review) => {
-    let reviewDate = review.reviewDate;
-    let stringDate = reviewDate.toString();
-    let formattedDate = stringDate.slice(0, 10).split("-");
-    if (formattedDate.length === 3) {
-      return `${formattedDate[2]}-${formattedDate[1]}-${formattedDate[0]}`;
-    }
-  };
-
   useEffect(() => {
     fetchBook();
     fetchReviews();
@@ -141,7 +123,7 @@ function BookDetailsPage() {
         <h2>{book.book.title}</h2>
         <h3>{book.book.authorId.name}</h3>
         <p>Publisher: {book.book.publisher}</p>
-        <p>Publishing date: {formattedPublishingDate()}</p>
+        <p>Publishing date: {book.book.publishingDate}</p>
         <p>Description: {book.book.description}</p>
 
         {book.book.categories &&
@@ -156,11 +138,11 @@ function BookDetailsPage() {
             <li key={review._id}>
               <img src={review.user?.image} style={{ height: "50px" }} />
               <p>User: {review.user?.userName}</p>
-              <p>Date: {formattedReviewDate(review)}</p>
+              <p>Date: {review.reviewDate}</p>
               <p>Rating: {review.rating}</p>
               <p>Comment: {review.comment}</p>
 
-              {userId === review.user._id && (
+              {userId === review.user._id && ( //added
                 <button
                   className="btn button-74"
                   onClick={() => openUpdateForm(review)}

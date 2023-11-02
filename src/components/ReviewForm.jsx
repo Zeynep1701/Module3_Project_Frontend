@@ -32,34 +32,53 @@ const reviewForm = ({ bookId, fetchBook, setReviews, reviews }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={{ margin: "1rem" }}>
-        <label>
-          <strong>Rating: </strong>
-          <select
-            id="dropdown"
-            name="dropdown"
-            value={rating}
-            onChange={(event) => setRating(event.target.value)}
-          >
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </label>
-        <label>
-          <strong>Comment: </strong>
-          <input
-            value={comment}
-            onChange={(event) => setComment(event.target.value)}
-          />
-        </label>
-        <button className="btn button-74" type="submit">
-          Add your review
-        </button>
-      </form>
+      <div className="updateForm">
+        <form onSubmit={handleSubmit} style={{ margin: "1rem" }}>
+          <table className="updateTable">
+            <tr>
+              <td>
+                <strong>Rating:</strong>
+              </td>
+              <td>
+                <label>
+                  <select
+                    className="input"
+                    id="dropdown"
+                    name="dropdown"
+                    value={rating}
+                    onChange={(event) => setRating(event.target.value)}
+                  >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Comment:</strong>
+              </td>
+              <td>
+                <label>
+                  <textarea
+                    className="input"
+                    value={comment}
+                    onChange={(event) => setComment(event.target.value)}
+                  />
+                </label>
+              </td>
+            </tr>
+          </table>
+
+          <button className="btn button-74" type="submit">
+            Add your review
+          </button>
+        </form>
+      </div>
     </>
   );
 };

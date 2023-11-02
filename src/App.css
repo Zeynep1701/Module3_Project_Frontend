@@ -283,3 +283,17 @@ h1 {
   margin-top: auto;
 
 }
+
+.reviewFormTable {
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.reviewForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
