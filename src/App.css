@@ -341,6 +341,11 @@ h1 {
   width: 40vw;
 }
 
+.profileImg {
+  border-radius: 50%;
+  height: 70px;
+}
+
 /*footer*/
 
 .footer {

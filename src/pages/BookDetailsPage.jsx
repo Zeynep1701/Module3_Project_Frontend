@@ -174,7 +174,7 @@ function BookDetailsPage() {
                   <li className="reviewCard" key={review._id}>
                     <div className="containerReview">
                       <div className="review1">
-                        <img src={review.user?.image} style={{ height: "50px" }} />
+                        <img src={review.user?.image} className="profileImg" />
                         <h2>{review.user?.userName}</h2>
                         <p>{formattedReviewDate(review)}</p>
                       </div>
