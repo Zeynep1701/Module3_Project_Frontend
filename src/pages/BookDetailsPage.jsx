@@ -157,7 +157,7 @@ function BookDetailsPage() {
           <hr class="line" />
 
           <h2>Ratings & Reviews</h2>
-          <h3>What do you think?</h3>
+          <h3>Leave your review to help others find their new favorite book!</h3>
 
           <ReviewForm
             bookId={book.book._id}
@@ -168,10 +168,10 @@ function BookDetailsPage() {
 
 
           <div >
-            <div className="profileCard"> {/*className="profileCard"*/}
+            <div> 
               {userId &&
                 reviews.map((review) => (
-                  <li key={review._id}>
+                  <li className="profileCard" key={review._id}>
                     <div className="containerReview">
                       <div className="review1">
                         <img src={review.user?.image} style={{ height: "50px" }} />

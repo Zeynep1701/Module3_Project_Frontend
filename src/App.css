@@ -315,6 +315,7 @@ h1 {
 
 .containerReview {
   display: flex;
+  margin: 1rem;
   /*flex-direction: row;
   align-items: right;*/
 }
@@ -322,15 +323,11 @@ h1 {
 
 .review1 {
   flex: 1;
-  align-items: right;
-  max-width: 200px;
-
+  max-width: 150px;
 }
 
 .review2 {
   flex: 1;
-  align-items: left;
-
 }
 
 /*footer*/
