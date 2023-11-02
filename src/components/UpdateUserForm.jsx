@@ -46,7 +46,7 @@ const UpdateReviewForm = ({ user, userToUpdate, onUpdateSuccess, onClose }) => {
                 name="userName"
                 id="userName"
                 value={userName}
-                onchange="(event) => setUserName(event.target.value)"
+                onChange={(event) => setUserName(event.target.value)}
               />
             </td>
           </tr>
@@ -61,7 +61,7 @@ const UpdateReviewForm = ({ user, userToUpdate, onUpdateSuccess, onClose }) => {
                 name="email"
                 id="email"
                 value={email}
-                onchange="(event) => setEmail(event.target.value)"
+                onChange={(event) => setEmail(event.target.value)}
               />
             </td>
           </tr>

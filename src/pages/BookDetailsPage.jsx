@@ -157,7 +157,9 @@ function BookDetailsPage() {
           <hr class="line" />
 
           <h2>Ratings & Reviews</h2>
-          <h3>Leave your review to help others find their new favorite book!</h3>
+          <h3>
+            Leave your review to help others find their new favorite book!
+          </h3>
 
           <ReviewForm
             bookId={book.book._id}
@@ -166,15 +168,18 @@ function BookDetailsPage() {
             reviews={reviews}
           />
 
-
-          <div >
-            <div> 
+          <div>
+            <div>
               {userId &&
                 reviews.map((review) => (
                   <li className="reviewCard" key={review._id}>
                     <div className="containerReview">
                       <div className="review1">
-                        <img src={review.user?.image} className="profileImg" />
+                        <img
+                          src={review.user?.image}
+                          className="profileImg"
+                          style={{ width: "100px", height: "100px" }}
+                        />
                         <h2>{review.user?.userName}</h2>
                         <p>{formattedReviewDate(review)}</p>
                       </div>
@@ -183,7 +188,7 @@ function BookDetailsPage() {
                         <p>{review.comment}</p>
                       </div>
                     </div>
-                    
+
                     {userId === review.user._id && (
                       <button
                         className="btn button-74"
@@ -203,10 +208,8 @@ function BookDetailsPage() {
                         Delete
                       </button>
                     ) : null}
-                   
                   </li>
                 ))}
-
             </div>
 
             {isUpdateFormOpen && reviewToUpdate && (
