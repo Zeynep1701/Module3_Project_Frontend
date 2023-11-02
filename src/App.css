@@ -330,6 +330,17 @@ h1 {
   flex: 1;
 }
 
+.reviewCard {
+  background-color: #fff;
+  border-radius: 4rem;
+  padding: 1rem;
+  margin: 0, 8rem 0;
+  margin-bottom: 1rem;
+  box-shadow: 0.4rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
+  background-color: #F2F2F2;
+  width: 40vw;
+}
+
 /*footer*/
 
 .footer {
@@ -337,6 +348,8 @@ h1 {
   margin-top: auto;
 
 }
+
+
 
 .reviewFormTable {
   border-collapse: separate;

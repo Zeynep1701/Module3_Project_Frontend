@@ -171,7 +171,7 @@ function BookDetailsPage() {
             <div> 
               {userId &&
                 reviews.map((review) => (
-                  <li className="profileCard" key={review._id}>
+                  <li className="reviewCard" key={review._id}>
                     <div className="containerReview">
                       <div className="review1">
                         <img src={review.user?.image} style={{ height: "50px" }} />
