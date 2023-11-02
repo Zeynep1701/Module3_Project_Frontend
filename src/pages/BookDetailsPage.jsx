@@ -102,20 +102,6 @@ function BookDetailsPage() {
     }
   };
 
-  useEffect(() => {
-    fetchBook();
-    fetchReviews();
-  }, [bookId]);
-
-  if (book === null) {
-    return (
-      <div className="half-circle-spinner">
-        <div className="circle circle-1"></div>
-        <div className="circle circle-2"></div>
-      </div>
-    );
-  }
-
   const formattedPublishingDate = () => {
     let publishingDate = book.book.publishingDate;
     let stringDate = publishingDate.toString();
@@ -133,6 +119,20 @@ function BookDetailsPage() {
       return `${formattedDate[2]}-${formattedDate[1]}-${formattedDate[0]}`;
     }
   };
+
+  useEffect(() => {
+    fetchBook();
+    fetchReviews();
+  }, [bookId]);
+
+  if (book === null) {
+    return (
+      <div className="half-circle-spinner">
+        <div className="circle circle-1"></div>
+        <div className="circle circle-2"></div>
+      </div>
+    );
+  }
 
   return (
     <>
