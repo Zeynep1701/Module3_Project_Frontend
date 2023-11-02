@@ -154,51 +154,69 @@ function BookDetailsPage() {
               </li>
             ))}
 
-            
+          <hr class="line" />
 
-          {userId &&
-            reviews.map((review) => (
-              <li key={review._id}>
-                <img src={review.user?.image} style={{ height: "50px" }} />
-                <p>User: {review.user?.userName}</p>
-                <p>Date: {formattedReviewDate(review)}</p>
-                <p>Rating: {review.rating}</p>
-                <p>Comment: {review.comment}</p>
+          <h2>Ratings & Reviews</h2>
+          <h3>What do you think?</h3>
 
-                {userId === review.user._id && (
-                  <button
-                    className="btn button-74"
-                    onClick={() => openUpdateForm(review)}
-                  >
-                    Update
-                  </button>
-                )}
-
-                {userId === review.user._id ? (
-                  <button
-                    className="btn button-74"
-                    onClick={() => {
-                      handleDelete(review._id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                ) : null}
-              </li>
-            ))}
           <ReviewForm
             bookId={book.book._id}
             fetchBook={fetchBook}
             setReviews={setReviews}
             reviews={reviews}
           />
-          {isUpdateFormOpen && reviewToUpdate && (
-            <UpdateReviewForm
-              review={reviewToUpdate}
-              onUpdateSuccess={handleUpdateSuccess}
-              onClose={closeUpdateForm}
-            />
-          )}
+
+
+          <div >
+            <div className="profileCard"> {/*className="profileCard"*/}
+              {userId &&
+                reviews.map((review) => (
+                  <li key={review._id}>
+                    <div className="containerReview">
+                      <div className="review1">
+                        <img src={review.user?.image} style={{ height: "50px" }} />
+                        <h2>{review.user?.userName}</h2>
+                        <p>{formattedReviewDate(review)}</p>
+                      </div>
+                      <div className="review2">
+                        <h3>Rating: {review.rating}</h3>
+                        <p>{review.comment}</p>
+                      </div>
+                    </div>
+                    
+                    {userId === review.user._id && (
+                      <button
+                        className="btn button-74"
+                        onClick={() => openUpdateForm(review)}
+                      >
+                        Update
+                      </button>
+                    )}
+
+                    {userId === review.user._id ? (
+                      <button
+                        className="btn button-74"
+                        onClick={() => {
+                          handleDelete(review._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    ) : null}
+                   
+                  </li>
+                ))}
+
+            </div>
+
+            {isUpdateFormOpen && reviewToUpdate && (
+              <UpdateReviewForm
+                review={reviewToUpdate}
+                onUpdateSuccess={handleUpdateSuccess}
+                onClose={closeUpdateForm}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

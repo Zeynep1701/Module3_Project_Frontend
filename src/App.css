@@ -307,6 +307,32 @@ h1 {
   border-radius: 0.4rem;
 }
 
+.line {
+  background: #6D69B5;
+  color: #6D69B5;
+  height: 1px;
+}
+
+.containerReview {
+  display: flex;
+  /*flex-direction: row;
+  align-items: right;*/
+}
+
+
+.review1 {
+  flex: 1;
+  align-items: right;
+  max-width: 200px;
+
+}
+
+.review2 {
+  flex: 1;
+  align-items: left;
+
+}
+
 /*footer*/
 
 .footer {
