@@ -136,65 +136,71 @@ function BookDetailsPage() {
 
   return (
     <>
-      <div>
-        <img src={book.book.image} style={{ height: "200px" }} />
-        <h2>{book.book.title}</h2>
-        <h3>{book.book.authorId.name}</h3>
-        <p>Publisher: {book.book.publisher}</p>
-        <p>Publishing date: {formattedPublishingDate()}</p>
-        <p>Description: {book.book.description}</p>
+      <div className="containerDetailPage">
+        <div className="left-block">
+          <img src={book.book.image} className="bookImage" />
+        </div>
+        <div className="right-content">
+          <h1>{book.book.title}</h1>
+          <h2>{book.book.authorId.name}</h2>
+          <h3>Description: {book.book.description}</h3>
+          <p>Publisher: {book.book.publisher}</p>
+          <p>Publishing date: {formattedPublishingDate()}</p>
 
-        {book.book.categories &&
-          book.book.categories.map((category, index) => (
-            <li key={index}>
-              <p>Categories:{category}</p>
-            </li>
-          ))}
+          {book.book.categories &&
+            book.book.categories.map((category, index) => (
+              <li key={index}>
+                <p>Categories:{category}</p>
+              </li>
+            ))}
 
-        {userId &&
-          reviews.map((review) => (
-            <li key={review._id}>
-              <img src={review.user?.image} style={{ height: "50px" }} />
-              <p>User: {review.user?.userName}</p>
-              <p>Date: {formattedReviewDate(review)}</p>
-              <p>Rating: {review.rating}</p>
-              <p>Comment: {review.comment}</p>
+            
 
-              {userId === review.user._id && (
-                <button
-                  className="btn button-74"
-                  onClick={() => openUpdateForm(review)}
-                >
-                  Update
-                </button>
-              )}
+          {userId &&
+            reviews.map((review) => (
+              <li key={review._id}>
+                <img src={review.user?.image} style={{ height: "50px" }} />
+                <p>User: {review.user?.userName}</p>
+                <p>Date: {formattedReviewDate(review)}</p>
+                <p>Rating: {review.rating}</p>
+                <p>Comment: {review.comment}</p>
 
-              {userId === review.user._id ? (
-                <button
-                  className="btn button-74"
-                  onClick={() => {
-                    handleDelete(review._id);
-                  }}
-                >
-                  Delete
-                </button>
-              ) : null}
-            </li>
-          ))}
+                {userId === review.user._id && (
+                  <button
+                    className="btn button-74"
+                    onClick={() => openUpdateForm(review)}
+                  >
+                    Update
+                  </button>
+                )}
+
+                {userId === review.user._id ? (
+                  <button
+                    className="btn button-74"
+                    onClick={() => {
+                      handleDelete(review._id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                ) : null}
+              </li>
+            ))}
+          <ReviewForm
+            bookId={book.book._id}
+            fetchBook={fetchBook}
+            setReviews={setReviews}
+            reviews={reviews}
+          />
+          {isUpdateFormOpen && reviewToUpdate && (
+            <UpdateReviewForm
+              review={reviewToUpdate}
+              onUpdateSuccess={handleUpdateSuccess}
+              onClose={closeUpdateForm}
+            />
+          )}
+        </div>
       </div>
-      <ReviewForm
-        bookId={book.book._id}
-        fetchBook={fetchBook}
-        setReviews={setReviews}
-        reviews={reviews}
-      />
-      {isUpdateFormOpen && reviewToUpdate && (
-        <UpdateReviewForm
-          review={reviewToUpdate}
-          onUpdateSuccess={handleUpdateSuccess}
-          onClose={closeUpdateForm}
-        />
-      )}
     </>
   );
 }
