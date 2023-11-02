@@ -27,9 +27,9 @@ const HomePage = () => {
         onClick={navigateSignup}
         className="homeBtn"
       >
-        Sign up
+        Sign up with email
       </button>
-      <button onClick={navigateLogin} className="homeBtn">Login</button>
+      <button onClick={navigateLogin} className="homeBtn">Already a member? Log in</button>
       </div>
     </div>
   );

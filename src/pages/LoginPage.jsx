@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -75,6 +75,9 @@ const LoginPage = () => {
         </button>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </form>
+      <p>By signing in, you agree to the Book Lovers Terms of Service and Privacy Policy</p>
+
+      <p>New to Book Lovers? <Link to="/signup">Sign up!</Link></p>
     </>
   );
 };

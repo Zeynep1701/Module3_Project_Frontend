@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignupPage = () => {
   const [userName, setUserName] = useState("");
@@ -40,7 +41,7 @@ const SignupPage = () => {
 
   return (
     <>
-      <h1>Sign up</h1>
+      <h1>Create Account</h1>
       <form onSubmit={handleSubmit} className="updateForm">
         <table>
           <tr>
@@ -99,6 +100,8 @@ const SignupPage = () => {
         <button className="btn button-74" type="submit">
           Register
         </button>
+        <p>By creating an account, you agree to the Book Lovers' Terms of Service and Privacy Policy</p>
+        <p>Already have an account? <Link to="/login">Log in</Link></p>
       </form>
     </>
   );
